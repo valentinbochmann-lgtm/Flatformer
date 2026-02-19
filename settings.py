@@ -1,8 +1,8 @@
 import pygame
 
 SCREEN_WIDTH = 800
-SCREEN_HEIGHT = 600
-TILE_SIZE = 200
+SCREEN_HEIGHT = 800
+worldGridSize = 50
 GRAVITY = 0.2
 FPS = 500
 

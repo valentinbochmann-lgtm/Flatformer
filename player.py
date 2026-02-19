@@ -4,11 +4,11 @@ import sys
 from settings import SCREEN_HEIGHT, SCREEN_WIDTH, GRAVITY, FPS
 
 class Player:
-    def __init__(self):
+    def __init__(self, x, y):
         self.width = 50
         self.height = 50
-        self.x = SCREEN_WIDTH / 2 - self.width / 2
-        self.y = SCREEN_HEIGHT - self.height - 10
+        self.x = x
+        self.y = y
         self.base_speed = 20
         self.velocity_x = 0
         self.velocity_y = 0
@@ -27,7 +27,8 @@ class Player:
         else:
             self.velocity_x = 0
 
-        if keys[pygame.K_UP] or keys[pygame.K_w] and self.isOnGround:
+        jump_pressed = keys[pygame.K_UP] or keys[pygame.K_w]
+        if jump_pressed and self.isOnGround:
             self.velocity_y = -10
             self.isOnGround = False
 
@@ -51,5 +52,5 @@ class Player:
     def draw(self, screen):
         pygame.draw.rect(screen, ("Red"), self.rect)   
 
-player = Player()
+
 
