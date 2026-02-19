@@ -6,5 +6,7 @@ TILE_SIZE = 200
 GRAVITY = 0.2
 FPS = 500
 
+screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+
 
 

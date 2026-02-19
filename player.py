@@ -15,12 +15,11 @@ class Player:
         self.isOnGround = False
         self.rect = pygame.Rect(self.x, self.y, self.width, self.height)
         self.prev_rect = self.rect.copy()
-        # cinar etisi boah ich han so richtig bok was leckeres zu ässe  
-        #
+        
     def move(self):
         self.prev_rect = self.rect.copy()
 
-        keys = pygame.key.get_press
+        keys = pygame.key.get_pressed()
         if keys[pygame.K_LEFT] or keys[pygame.K_a]:
             self.velocity_x = -self.base_speed
         elif keys[pygame.K_RIGHT] or keys[pygame.K_d]:
@@ -49,7 +48,7 @@ class Player:
         self.rect.x = self.x
         self.rect.y = self.y
 
-    def draw(self):
+    def draw(self, screen):
         pygame.draw.rect(screen, ("Red"), self.rect)   
 
 player = Player()
