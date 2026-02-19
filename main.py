@@ -1,16 +1,43 @@
 import pygame
 import sys
 import os
-from settings import SCREEN_WIDTH, SCREEN_HEIGHT, FPS, GRAVITY
+from settings import *
 from player import Player
+from levels import *
 
 pygame.init()
 
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-pygame.display.set_caption("Platformer")
+pygame.display.set_caption("Flatformer")
 clock = pygame.time.Clock()
 
-player = Player(colour="Red")
+class World():
+    def __init__(self, data):
+        self.tile_list = []
+
+        platform1_img = pygame.image.load("images/Platform_1.png")
+        platform2_img = pygame.image.load("images/Platform_2.png")
+        bg1_img = pygame.image.load("images/BG_1.png")
+
+        
+        row_count = 0
+        for row in data:
+            column_count = 0
+            for tile in row:
+                if tile == 1:
+                    img = pygame.transform.scale(platform1_img, (TILE_SIZE, TILE_SIZE))
+                elif tile == 2:
+                    img = pygame.transform.scale(platform2_img, (TILE_SIZE, TILE_SIZE))
+                    img_rect = img.get_rect()
+                    img_rect.x = column_count * TILE_SIZE
+                    img_rect.y = row_count * TILE_SIZE
+                    tile = (img, img_rect)
+                    self.tile_list.append(tile)
+                column_count += 1
+            row_count += 1
+
+player = Player()
+world = World(level1_data)
 
 class Platform:
     def __init__(self, x, y, width, height):
@@ -30,14 +57,20 @@ platforms = [Platform(100, 500, 100, 30), Platform(200, 400, 100, 30), Platform(
 def draw(colour, rect):
     pygame.draw.rect(screen, colour, rect)
 
+def set_level(): 
+    level += 1
+
+
 def main():
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
-    
-        screen.fill((0,0,0))
+
+        screen.blit(world.bg1_img, (0, 0))
+
+        print(world)
 
         player.move()
         draw(player.colour, player.rect)
