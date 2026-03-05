@@ -10,17 +10,11 @@ pygame.init()
 pygame.display.set_caption("Flatformer")
 clock = pygame.time.Clock()
 
-bg1_img = pygame.image.load("images/bg1.png")
-bg1_img = pygame.transform.scale(bg1_img, (SCREEN_WIDTH, SCREEN_HEIGHT))
-bg_tuple = (bg1_img)
-
-dirt1_img = pygame.image.load("images/dirt1.png")
-dirt2_img = pygame.image.load("images/dirt2.png")
+player = Player(250, 650)
 
 
 def main():
 
-    player = Player(250, 650)
     while True:
 
         for event in pygame.event.get():
@@ -33,6 +27,7 @@ def main():
 
         player.move()
         player.draw(screen)
+        enemy_group.draw(screen)
         
         for tile in world.tile_list:
             tile_rect = tile[1]

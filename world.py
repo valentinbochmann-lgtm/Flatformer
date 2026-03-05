@@ -1,16 +1,14 @@
 import pygame
 import json
 from settings import *
+from enemy import *
+
+enemy_group = pygame.sprite.Group()
 
 class World():
     def __init__(self, json_data):
 
         self.tile_list = []
-
-        
-        dirt1_img = pygame.image.load("images/dirt1.png").convert_alpha()
-        dirt2_img = pygame.image.load("images/dirt2.png").convert_alpha()
-
         tile_size = worldGridSize
         
         for layer in json_data["layers"]:
@@ -26,6 +24,12 @@ class World():
                     img = pygame.transform.scale(dirt1_img, (tile_size, tile_size))
                 elif tile_id == 1:
                     img = pygame.transform.scale(dirt2_img, (tile_size, tile_size))
+                elif tile_id == 2:
+                    img = pygame.transform.scale(dirt3_img, (tile_size, tile_size))
+                elif tile_id == 3:
+                    enemy = Enemy(x, y)
+                    enemy_group.add(enemy)
+                    img = pygame.transform.scale(enemy_img, (tile_size, tile_size))
         
 
                 img_rect = img.get_rect()

@@ -1,7 +1,7 @@
 import pygame
 import os
 import sys
-from settings import SCREEN_HEIGHT, SCREEN_WIDTH, GRAVITY, FPS
+from settings import *
 
 class Player:
     def __init__(self, x, y):
@@ -9,7 +9,7 @@ class Player:
         self.height = 50
         self.x = x
         self.y = y
-        self.base_speed = 20
+        self.base_speed = 6
         self.velocity_x = 0
         self.velocity_y = 0
         self.isOnGround = False
