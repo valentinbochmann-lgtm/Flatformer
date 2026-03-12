@@ -44,4 +44,4 @@ class World():
 with open("levels/level1.json", "r") as f:
     map_data = json.load(f)
 
-world = World(map_data)   # only if your JSON is wrapped in []
+world = World(map_data)   

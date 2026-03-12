@@ -14,6 +14,7 @@ dirt2_img = pygame.image.load("images/dirt2.png").convert_alpha()
 dirt3_img = pygame.image.load("images/dirt3.png").convert_alpha()
 darkstone_img = pygame.image.load("images/dark_stone.png").convert_alpha()
 enemy_img = pygame.image.load("images/enemy.png").convert_alpha()
+restart_img = pygame.image.load("images/restart_button.png").convert_alpha()
 
 #background images
 bg1_img = pygame.image.load("images/bg1.png")
